@@ -1,0 +1,67 @@
+<div class="features_items">  <!-- Items added by user -->
+  <h2 class="title text-center">Your Items</h2>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <a class="btn btn-primary btn-md"
+      href="#/newitem/category/{[{categoryId}]}">Add New Item <span class="glyphicon glyphicon-plus"></span></i></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4" ng-repeat="item in data.userItems">
+      <div class="product-image-wrapper">
+        <div class="single-products">
+          <div class="productinfo text-center">
+            <img  width="304" height="236"
+            ng-src="{[{item.image_src?item.image_src:'static/images/noimage.png'}]}"
+            alt="" />
+            <h2>{[{item.price}]}</h2>
+            <p>{[{item.name}]}</p>
+          </div>
+          <div class="product-overlay">
+            <div class="overlay-content">
+              <p>{[{item.description}]}</p>
+              <h2>{[{item.price}]}</h2>
+              <p>{[{item.name}]}</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="choose">
+          <ul class="nav nav-pills nav-justified">
+            <li><a href="#/edit/category/{[{categoryId}]}/item/{[{item.id}]}"><i class="fa fa-pencil-square-o"></i>Edit</a></li>
+            <li><a href="#/delete/category/{[{categoryId}]}/item/{[{item.id}]}"><i class="fa fa-trash-o"></i>Delete</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  <!-- Items added by user -->
+
+<div class="features_items">  <!-- Items added by other users -->
+  <h2 class="title text-center">Added by other users</h2>
+  <div class="row">
+    <div class="col-sm-4" ng-repeat="item in data.itemsByOtherUsers">
+      <div class="product-image-wrapper">
+        <div class="single-products">
+          <div class="productinfo text-center">
+            <img  width="304" height="236"
+            ng-src="{[{item.image_src?item.image_src:'static/images/noimage.png'}]}"
+            alt="" />
+            <h2>{[{item.price}]}</h2>
+            <p>{[{item.name}]}</p>
+          </div>
+          <div class="product-overlay">
+            <div class="overlay-content">
+              <p>{[{item.description}]}</p>
+              <h2>{[{item.price}]}</h2>
+              <p>{[{item.name}]}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  <!-- Items added by other users -->
+<hr>

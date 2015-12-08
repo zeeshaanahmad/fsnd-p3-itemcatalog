@@ -1,0 +1,24 @@
+<!-- DeleteItemController is associated with this partial -->
+<div class="features_items">
+  <h2 class="title text-center">Delete {[{itemName}]}?</h2>
+  <form>
+    <div class="col-sm-6">
+      <fieldset class="form-group">
+        <img ng-src="{[{image_src?image_src:'static/images/noimage.png'}]}"
+        class="img-thumbnail"
+        alt="" width="304" height="236">
+      </fieldset>
+    </div>
+    <div class="col-sm-6">
+      <h3><i class="fa fa-delete"></i>Do you really want to delete {[{itemName}]}?</h3>
+      <div class="row">
+        <div class="col-sm-6">
+          <button type="button" class="btn btn-danger" ng-click="deleteItem()">Delete</button>
+        </div>
+        <div class="col-sm-6">
+          <button type="button" class="btn btn-success" ng-click="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,42 @@
+<div class="features_items">
+  <h2 class="title text-center">{[{itemName}]}</h2>
+  <form ng-submit="editItem()">
+    <div class="col-sm-6">
+      <fieldset class="form-group">
+        <img ng-src="{[{image_src?image_src:'static/images/noimage.png'}]}"
+        width="304" height="236"
+        class="img-thumbnail"
+        alt="">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="image">Image</label>
+        <input type="file" file="file" class="form-control-file" id="image">
+        <small class="text-muted">Allowed file types: jpg/jpeg/png types, Allowed file size: 5 MB</small>
+      </fieldset>
+    </div>
+    <div class="col-sm-6">
+      <fieldset class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+        ng-model="itemName"
+        placeholder="Enter Name">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description"
+        ng-model="itemDescription" rows="3"
+        placeholder="Item description goes here..."></textarea>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price"
+        ng-model="itemPrice"
+        placeholder="Enter Price">
+      </fieldset>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+  </form>
+</div>
+<!-- ng-click="addItem()" -->

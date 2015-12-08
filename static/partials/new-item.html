@@ -1,0 +1,29 @@
+<div class="features_items">
+  <h2 class="title text-center">New Item</h2>
+
+  <div class="col-sm-6 col-sm-offset-3">
+    <form ng-submit="addItem()">
+      <fieldset class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" ng-model="itemName"
+        placeholder="Enter Name">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" ng-model="itemDescription" rows="3" placeholder="Item description goes here..."></textarea>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" ng-model="itemPrice"
+        placeholder="Enter Price">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="image">Image</label>
+        <!-- file attribute is a custom directive defined in app.js -->
+        <input type="file" file="file" class="form-control-file" id="image">
+        <small class="text-muted">Allowed file types: jpg/jpeg/png types, Allowed file size: 5 MB</small>
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

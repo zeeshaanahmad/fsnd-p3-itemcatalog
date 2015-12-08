@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<!-- Udacity Fullstack Nanodegree (FSND) - P3 - Item Catalog
+Developer: Zeeshan Ahmad
+Email: ahmad.zeeshaan@gmail.com
+Github: https://github.com/zeeshaanahmad -->
+
+<!-- NOTE: THIS APPLICATION IS DEVELOPED USING ANGULARJS -->
+<!-- ng-app binds the myapp angularjs module with this html page -->
+<html ng-app="myapp">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="description" content="Item Catalog">
+  <meta name="author" content="Zeeshan Ahmad">
+  <title>Item Catalog</title>
+
+  <!-- Loading Bootstrap CSS for UI -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}"></link>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap-theme.css') }}"></link>
+
+  <!-- style.css includes custom styles and overridden bootstrap classes -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"></link>
+</head>
+
+<body>
+  <!-- Using hidden controls to persist user information and state for preventing CSRF -->
+  <div ng-hide="true" ng-controller="StateController">
+    <!-- hidden controls start -->
+    <input type="hidden" name="state" ng-init="state='{{STATE}}'" value="{{STATE}}" ng-model="state" />
+    <input type="hidden" name="username" value="{{USERNAME}}" />
+    <input type="hidden" name="profile_picture" value="{{PICTURE}}" />
+  </div>
+  <!-- hidden controls end -->
+
+  <nav class="navbar navbar-inverse" role="navigation">  <!-- nav start -->
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/index">Item Catalog</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#/index">Home</a></li>
+        </ul>
+
+        <!-- Logout button which clears the current session on the server and redirects the user to login page -->
+        <ul class="nav navbar-nav navbar-right">
+          <!-- User's profile picture is replaced by the server in {{PICTURE}} -->
+          <li>
+            <a href="/disconnect">
+              <img src="{{PICTURE}}" style="width: 25px; height: 25px;border-radius: 15px;-webkit-border-radius: 15px;-moz-border-radius: 15px;"></img>
+              <strong>Logout</strong>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>  <!-- nav end -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3"> <!-- left menu start -->
+          <div class="left-sidebar">
+            <h2>Categories</h2>
+            <div class="panel-group category-products" ng-controller="CategoriesController" id="accordian">
+              <!-- ng-repeat iterates through the list of categories recieved and builds
+              categories menu -->
+              <div class="panel panel-default" ng-repeat="category in data.categories">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordian" href="#/categories/{[{category.id}]}/items/all">
+                      {[{category.name}]}
+                    </a>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- left menu end -->
+
+        <div class="col-sm-9 padding-right"> <!-- content section starts -->
+          <!-- custom-alerts directive show a bootstrap alert which is invoked
+           using Alert service -->
+          <custom-alerts alert-type="errorAlert"></custom-alerts>
+          <custom-alerts alert-type="successAlert"></custom-alerts>
+          <div ng-view>
+            <!-- different sections of application like home, adding new item,
+            editing item, deleting item etc have been broken down in html
+            partials which are loaded using AngularJS routing -->
+          </div>
+        </div>  <!-- content section ends -->
+      </div>
+    </div>
+  </section>
+
+  <!-- loading angularjs library -->
+  <script src="{{url_for('static', filename='angular/angular.min.js')}}"></script>
+  <!-- loading angular routing module to enable url routing in the app  -->
+  <script src="{{url_for('static', filename='angular/angular-route.min.js')}}"></script>
+
+  <!-- loading js which handles angular stuff and most of the functionality -->
+  <script src="{{url_for('static', filename='js/app.js')}}"></script>
+</body>
+
+</html>
