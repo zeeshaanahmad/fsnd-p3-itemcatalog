@@ -70,6 +70,12 @@ Follow the guidelines provided in the [project description][1] to set up the vag
 5. Open your web browser and go to `http://localhost:5000`
 6. Application's login page will be loaded. Use either of the Google or Facebook to sign in.
 
+## REST Service Response Data Types
+Currently, by default REST services return result as JSON objects. But if the request contains `f=xml` parameter, then the result will be in xml format.
+example url:
+    `http://localhost:5000/categories/all?state=<state token>` returns JSON objects
+    `http://localhost:5000/categories/all?state=<state token>&f=xml` returns XML formatted data
+
 ## Item Catalog Application Details
 * It has 3 major sections i.e. Navbar, Left menu, content area. Navbar and left menu remain unchanged during the runtime but content area has views which keep on changing based on different tasks being performed by user.
 * When User logs in successfully, they are greeted with displaying their profile pic.
